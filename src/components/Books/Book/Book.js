@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Dropdown, DropdownButton } from 'react-bootstrap';
-import * as BooksAPI from 'utilities/BooksAPI'
+import * as BooksAPI from '../../../utilities/BooksAPI'
 
 class Book extends Component {
   handleShelfAction(book, newShelf) {
@@ -9,9 +9,16 @@ class Book extends Component {
         this.props.updateShelf(book)
       })
   }
+  
+  render() {
+    let bookUsed = this.props.book
+    this.props.allUserBooks.forEach((book) => {
+      if(book.id === this.props.book.id) {
+        bookUsed = book
+      }
+    })
+    const { id, title, imageLinks, authors, shelf } = bookUsed
 
-  render() { 
-    const { id, title, imageLinks, authors, shelf } = this.props.book
     return (<Card
       key={id}
       className='mx-auto'

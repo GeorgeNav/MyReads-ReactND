@@ -1,14 +1,14 @@
-import * as BooksAPI from 'utilities/BooksAPI'
+import * as BooksAPI from '../../utilities/BooksAPI'
 import React, { Component } from 'react'
-import Search from 'components/Search/Search'
-import Shelf from 'components/Categories/Shelf'
+import Search from '../Search/Search'
+import Shelf from '../Shelf/Shelf'
 
 class Main extends Component {
   state = {
     currentlyReading: [],
     wantToRead: [],
     read: [],
-    allBooks: [],
+    allUserBooks: [],
   }
 
   componentDidMount() {
@@ -19,7 +19,7 @@ class Main extends Component {
       let currentlyReading = []
       let wantToRead = []
       let read = []
-      let allBooks = Object.entries(result).map(([_, book]) => {
+      let allUserBooks = Object.entries(result).map(([_, book]) => {
         switch(book.shelf) {
           case 'currentlyReading':
             currentlyReading.push(book); break;
@@ -37,7 +37,7 @@ class Main extends Component {
         currentlyReading: currentlyReading,
         wantToRead: wantToRead,
         read: read,
-        allBooks: allBooks,
+        allUserBooks: allUserBooks,
       }))
     })
   }
@@ -87,9 +87,11 @@ class Main extends Component {
         updateShelf={this.updateShelf}
         currentlyReading={this.state.currentlyReading}
         wantToRead={this.state.wantToRead}
-        read={this.state.read} />
+        read={this.state.read}
+        allUserBooks={this.state.allUserBooks} />
       <Search
-        updateShelf={this.updateShelf} />
+        updateShelf={this.updateShelf}
+        allUserBooks={this.state.allUserBooks} />
     </div>)
   }
 }

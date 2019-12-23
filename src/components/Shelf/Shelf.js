@@ -1,7 +1,7 @@
 import { Col, Button } from 'react-bootstrap'
 import { Route } from 'react-router-dom'
 import React, { Component } from 'react';
-import Books from 'components/Books/Books'
+import Books from '../Books/Books'
 
 class Shelf extends Component {
   state = {
@@ -31,15 +31,18 @@ class Shelf extends Component {
         <Books
           updateShelf={this.props.updateShelf}
           category='Currently Reading'
-          books={this.state.currentlyReading} />
+          books={this.state.currentlyReading}
+          allUserBooks={this.props.allUserBooks} />
         <Books
           updateShelf={this.props.updateShelf}
           category='Want to Read'
-          books={this.state.wantToRead} />
+          books={this.state.wantToRead}
+          allUserBooks={this.props.allUserBooks} />
         <Books
           updateShelf={this.props.updateShelf}
           category='Read'
-          books={this.state.read} />
+          books={this.state.read}
+          allUserBooks={this.props.allUserBooks} />
         <Button
           style={{
             margin: '8px'

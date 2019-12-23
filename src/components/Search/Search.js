@@ -1,6 +1,6 @@
 import { Container, InputGroup, FormControl, Button } from 'react-bootstrap'
-import Books from 'components/Books/Books'
-import * as BooksAPI from 'utilities/BooksAPI'
+import Books from '../Books/Books'
+import * as BooksAPI from '../../utilities/BooksAPI'
 import { Route } from 'react-router-dom'
 import React, { Component } from 'react'
 
@@ -48,6 +48,7 @@ class Search extends Component {
         <Books
           updateShelf={this.props.updateShelf}
           category='Search Results'
+          allUserBooks={this.props.allUserBooks}
           books={this.state.resultingBooks}/>
       </Container>} >
     </Route>);

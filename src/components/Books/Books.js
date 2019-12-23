@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
-import Book from 'components/Books/Book/Book';
+import Book from './Book/Book';
 
 class Books extends Component {
   state = {
@@ -30,7 +30,8 @@ class Books extends Component {
           (<Book
             updateShelf={this.props.updateShelf}
             key={book.id}
-            book={book}/>)
+            book={book}
+            allUserBooks={this.props.allUserBooks} />)
         )}
       </Row>
     </div>);
